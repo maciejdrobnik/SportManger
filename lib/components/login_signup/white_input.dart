@@ -18,7 +18,8 @@ class WhiteInput extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintText:hintText,
-          prefix: Text("    "),
+          //It needs to be another way to do this
+          prefix: const Text("    "),
           filled: true,
           fillColor: Colors.white,
           border: const OutlineInputBorder(

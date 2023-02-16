@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:sport_manager/components/login_signup/login_page.dart';
-void main() {
+import 'package:get/get.dart';
+import 'localization/LocaleString.dart';
+
+void main()  {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SportManager',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: LogInPage(),
-    );
+        return GetMaterialApp(
+          translations: LocaleString(),
+          // locale is the language which will be the default one
+          locale: Locale('nl'),
+          title: 'SportManager',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+          ),
+          home: LogInPage(),
+        );
   }
 }

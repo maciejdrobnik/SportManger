@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'white_input.dart';
 import 'yellow_button.dart';
+import '../../localization/change_localization.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   TextEditingController testController = TextEditingController();
   void testAction() {
-    print("Test");
+
   }
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,14 @@ class _LogInPageState extends State<LogInPage> {
             image: AssetImage('assets/SportManagerLogo.png'),
           ),
           Padding(
-              padding: EdgeInsets.only(top:20, ),
+              padding: EdgeInsets.only(top:20),
               child: WhiteInput(textController: testController, hintText: "testHint"),
           ),
           WhiteInput(textController: testController, hintText: "testHint"),
-          YellowButton(buttonText: 'Inloggen als speler/ouder', onPressAction: testAction),
-          YellowButton(buttonText: 'Inloggen als Sportmanager', onPressAction: testAction)
-    ],
+          YellowButton(buttonText: "login".tr, onPressAction: testAction),
+          YellowButton(buttonText: "login2".tr, onPressAction: testAction),
+          ChangeLanuage()
+        ],
     ),
         ),
         ),
