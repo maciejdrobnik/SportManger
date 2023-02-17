@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_manager/components/home_page/sponsor.dart';
 import 'agenda.dart';
 import 'chores.dart';
 import 'program.dart';
@@ -19,13 +20,18 @@ class HomePage extends StatelessWidget {
               onPressed: () {}, icon: Icon(Icons.menu))
         ],
       ),
-      backgroundColor: Colors.white,
-      body: Column(
+      backgroundColor: Color(0xffE4E6EB),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: constants.homePagePaddingHorizontal),
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Agenda(),
           Program(),
-          Chores()
+          Chores(),
+          Sponsor()
         ],
+        ),
       ),
     );
   }
