@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "817356810391",
+    "project_id": "sportmanager-2226b",
+    "storage_bucket": "sportmanager-2226b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817356810391:android:dcdae62f2e83229f7721d2",
+        "android_client_info": {
+          "package_name": "com.example.sport_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817356810391-drfaho9l0pce694kch30gtnkeaqfr7iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwBs-Q8fzmOGifNyJwy3gxbYBVia6cbrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817356810391-drfaho9l0pce694kch30gtnkeaqfr7iu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "817356810391-1125hr16c2j6u2liucmp01p114gjedmd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sportManager"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
