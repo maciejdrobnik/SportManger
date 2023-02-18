@@ -15,22 +15,15 @@ class HomePage extends StatelessWidget {
         backgroundColor: Color(constants.primaryBlue),
         title: Text('Overview'),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: Icon(Icons.menu))
-        ],
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))],
       ),
       backgroundColor: Color(0xffE4E6EB),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: constants.homePagePaddingHorizontal),
+        padding: EdgeInsets.symmetric(
+            horizontal: constants.homePagePaddingHorizontal),
         child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Agenda(),
-          Program(),
-          Chores(),
-          Sponsor()
-        ],
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [Agenda(), Program(), Chores(), Sponsor()],
         ),
       ),
     );

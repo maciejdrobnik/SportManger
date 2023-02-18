@@ -13,7 +13,7 @@ class Chores extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(constants.homePageContainerBorderRadius)),
             ),
         ),
         ),
