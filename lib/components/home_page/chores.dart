@@ -7,12 +7,12 @@ class Chores extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 2,
+      flex: constants.bigWhiteBoxFlex,
         child:Padding(
-          padding: EdgeInsets.only(bottom:constants.homePagePaddingVertical),
+          padding: const EdgeInsets.only(bottom:constants.homePagePaddingVertical),
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
+            decoration: const BoxDecoration(
+              color: constants.backgroundBox,
               borderRadius: BorderRadius.all(Radius.circular(constants.homePageContainerBorderRadius)),
             ),
         ),

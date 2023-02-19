@@ -13,7 +13,7 @@ class HomeBlueButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: (){},
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(constants.primaryBlue),
+          backgroundColor: const Color(constants.primaryBlue),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50)
           ),

@@ -8,10 +8,10 @@ class Sponsor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child:Padding(
-      padding: EdgeInsets.only(bottom: constants.homePagePaddingVertical),
+      padding: const EdgeInsets.only(bottom: constants.homePagePaddingVertical),
       child:Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
+        decoration: const BoxDecoration(
+          color: constants.backgroundBox,
           borderRadius: BorderRadius.all(Radius.circular(constants.homePageContainerBorderRadius)),
         ),
       ),

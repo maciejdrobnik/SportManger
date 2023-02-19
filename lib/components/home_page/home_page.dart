@@ -12,18 +12,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(constants.primaryBlue),
-        title: Text('Overview'),
+        backgroundColor: const Color(constants.primaryBlue),
+        title: const Text('Overview'),
         centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.menu))],
       ),
-      backgroundColor: Color(0xffE4E6EB),
+      backgroundColor: const Color(constants.homePageBackground),
       body: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
             horizontal: constants.homePagePaddingHorizontal),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [Agenda(), Program(), Chores(), Sponsor()],
+          children: const [Agenda(), Program(), Chores(), Sponsor()],
         ),
       ),
     );
