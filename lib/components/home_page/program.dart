@@ -10,16 +10,7 @@ class Program extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: constants.bigWhiteBoxFlex,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: constants.homePagePaddingVertical),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: constants.backgroundBox,
-            borderRadius: BorderRadius.all(Radius.circular(constants.homePageContainerBorderRadius)),
-          ),
-          child: Padding(
+    return Padding(
             padding: const EdgeInsets.only(top: constants.programPaddingTop),
             child: Column(
               children: [
@@ -87,9 +78,6 @@ class Program extends StatelessWidget {
                 )
               ],
             ),
-          ),
-        ),
-      ),
     );
   }
 }
