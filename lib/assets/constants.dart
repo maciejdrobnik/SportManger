@@ -29,7 +29,7 @@ const double programPaddingBottom = 8 / bigWhiteBoxHeight;
 /// Those 3 will need to be changed. I will think about it later
 const double programIconSize = 20;
 const double programRaiseDateAndIcon = 20;
-const double yellowButtonFontSize = 12 / bigWhiteBoxHeight;
+const double yellowButtonFontSize = 10 / bigWhiteBoxHeight;
 const double blueButtonFontSize = 18 / bigWhiteBoxHeight;
 const double programDateFontSize = 18 / bigWhiteBoxHeight;
 const double programHourFontSize = 20 / bigWhiteBoxHeight;
