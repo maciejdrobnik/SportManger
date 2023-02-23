@@ -3,24 +3,24 @@ import './../../assets/constants.dart' as constants;
 
 class HomeYellowButton extends StatelessWidget {
   final String content;
-  const HomeYellowButton({Key? key, required this.content}) : super(key: key);
+  final double yellowButtonFontSize;
+  const HomeYellowButton({Key? key, required this.content, required this.yellowButtonFontSize }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 125,
-      height: 20,
+    return FractionallySizedBox(
+      widthFactor: constants.widthFactorYellowButton,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(constants.primaryYellow),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(constants.buttonsBorderRadius)),
         ),
         child: Text(
           content,
           style: TextStyle(
-            fontSize: constants.yellowbuttonSize,
+            fontSize: yellowButtonFontSize,
           ),
         ),
       ),

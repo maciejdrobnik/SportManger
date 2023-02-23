@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_manager/components/home_page/home_yellow_button.dart';
 import './../../assets/constants.dart' as constants;
 import 'home_blue_button.dart';
 
@@ -14,34 +15,34 @@ class Program extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints constraints) {
       return Column(
         children: [
-          const Flexible(
-            flex: 24,
+          Flexible(
+            flex: constants.programBlueButtonFlex,
             child: Padding(
-              padding: EdgeInsets.only(top: constants.programPaddingTop),
-              child: HomeBlueButton(content: "Program"),
+              padding: EdgeInsets.only(top: constraints.maxHeight * constants.programPaddingTop),
+              child: HomeBlueButton(content: "Program", blueButtonFontSize: constraints.maxHeight * constants.blueButtonFontSize,),
             ),
           ),
-          const Flexible(
-            flex: 17,
+          Flexible(
+            flex: constants.programDateFlex,
             child: Padding(
                 padding: EdgeInsets.symmetric(
-                    vertical: constants.programDateVerticalPadding),
+                    vertical: constraints.maxHeight * constants.programDateVerticalPadding),
                 child: Text(
                   "Sunday February 13 2022",
                   style: TextStyle(
-                    fontSize: constants.programDateFontSize,
-                    color: Color(constants.homePageTextColor),
+                    fontSize: constraints.maxHeight * constants.programDateFontSize,
+                    color: const Color(constants.homePageTextColor),
                     fontWeight: FontWeight.w600,
                     overflow: TextOverflow.visible,
                   ),
                 )),
           ),
           Flexible(
-            flex: 42,
+            flex: constants.programTeamsRowFlex,
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: constants.programRowPaddingLeft,
-                  right: constants.programRowPaddingRight),
+              padding: EdgeInsets.only(
+                  left: constraints.maxWidth * constants.programRowPaddingLeft,
+                  right:constraints.maxWidth * constants.programRowPaddingRight),
               child: Row(
                 children: [
                   Flexible(
@@ -51,36 +52,33 @@ class Program extends StatelessWidget {
                         Column(
                           children: [
                             Flexible(
-                              flex: 56,
+                              flex: constants.programTeamLogoFlex,
                               child: Image.asset("lib/assets/images/logo1.png"),
                             ),
-                            const Flexible(
-                              flex: 3,
-                              child: SizedBox(
-                                  height: constants.breakBetweenLogoAndName),
+                            Flexible(
+                              flex: constants.programBreakBetweenLogAndNameFlex,
+                              child: Container(),
                             ),
-                            const Flexible(flex: 16, child: Text("Team1")),
+                            const Flexible(flex: constants.programTeamNameFlex, child: Text("Team1")),
                           ],
                         ),
-                        const Text(
+                        Text(
                           "14:00",
                           style: TextStyle(
-                            fontSize: constants.programHourFontSize,
+                            fontSize: constraints.maxHeight * constants.programHourFontSize,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         Column(
                           children: [
                             Flexible(
-                              flex: 56,
+                              flex: constants.programTeamLogoFlex,
                               child: Image.asset("lib/assets/images/logo2.png"),
                             ),
                             Flexible(
-                              flex: 3,
-                              child: const SizedBox(
-                                  height: constants.breakBetweenLogoAndName),
-                            ),
-                            Flexible(flex: 16, child: const Text("Team2")),
+                              flex: constants.programBreakBetweenLogAndNameFlex,
+                              child: Container()),
+                            const Flexible(flex: constants.programTeamNameFlex, child: Text("Team2")),
                           ],
                         ),
                       ],
@@ -102,9 +100,12 @@ class Program extends StatelessWidget {
             ),
           ),
           Flexible(
-            flex: 17,
-            child: Container(),
+            flex: constants.programYellowButtonFlex,
+            child: Padding(
+              padding:EdgeInsets.only(bottom: constraints.maxHeight * constants.programPaddingBottom),
+              child:HomeYellowButton(content: "Match Information", yellowButtonFontSize: constraints.maxHeight * 10 / 180),
           )
+          ),
         ],
       );
     });

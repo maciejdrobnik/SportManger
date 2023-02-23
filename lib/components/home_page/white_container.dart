@@ -10,8 +10,11 @@ class WhiteContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: flexValue,
-      child:Padding(
-        padding: const EdgeInsets.only(bottom: constants.homePagePaddingVertical),
+      child:LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          var deviceInfo = MediaQuery.of(context);
+      return Padding(
+        padding: EdgeInsets.only(bottom: deviceInfo.size.height * constants.homePagePaddingVertical),
         child: Container(
           decoration: const BoxDecoration(
             color: constants.backgroundBox,
@@ -19,7 +22,9 @@ class WhiteContainer extends StatelessWidget {
           ),
           child: content,
         ),
-      ),
+      );
+    })
     );
+
   }
 }
