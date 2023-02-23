@@ -23,9 +23,12 @@ class HomePage extends StatelessWidget {
           builder: (BuildContext context, BoxConstraints constraints) {
             return Padding(
               padding: EdgeInsets.only(
-                  left: constraints.maxWidth * constants.homePagePaddingHorizontal,
-                  right: constraints.maxWidth * constants.homePagePaddingHorizontal,
-                  top: constraints.maxHeight * constants.homePagePaddingVertical),
+                  left: constraints.maxWidth *
+                      constants.homePagePaddingHorizontal,
+                  right: constraints.maxWidth *
+                      constants.homePagePaddingHorizontal,
+                  top: constraints.maxHeight *
+                      constants.homePagePaddingVertical),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: const [

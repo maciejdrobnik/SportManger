@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_manager/components/home_page/home_yellow_button.dart';
 import './../../assets/constants.dart' as constants;
@@ -20,10 +21,10 @@ class Program extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                   top: constraints.maxHeight * constants.programPaddingTop),
-              child: HomeBlueButton(
+              child: const HomeBlueButton(
                 content: "Program",
-                blueButtonFontSize:
-                    constraints.maxHeight * constants.blueButtonFontSize,
+                minBlueButtonFontSize: constants.minBlueButtonFontSize,
+                maxBlueButtonFontSize: constants.maxBlueButtonFontSize,
               ),
             ),
           ),
@@ -33,12 +34,13 @@ class Program extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                     vertical: constraints.maxHeight *
                         constants.programDateVerticalPadding),
-                child: Text(
+                child: const AutoSizeText(
                   "Sunday February 13 2022",
+                  maxLines: 1,
+                  maxFontSize: constants.programMaxDateFontSize,
+                  minFontSize: constants.programMinDateFontSize,
                   style: TextStyle(
-                    fontSize:
-                        constraints.maxHeight * constants.programDateFontSize,
-                    color: const Color(constants.homePageTextColor),
+                    color: Color(constants.homePageTextColor),
                     fontWeight: FontWeight.w600,
                     overflow: TextOverflow.visible,
                   ),
@@ -56,6 +58,7 @@ class Program extends StatelessWidget {
                   Flexible(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           children: [
@@ -72,13 +75,16 @@ class Program extends StatelessWidget {
                                 child: Text("Team1")),
                           ],
                         ),
-                        Text(
+                        Padding(
+                          padding: EdgeInsets.only(top:constraints.maxHeight * constants.programHourPaddingTop),
+                          child:const AutoSizeText(
                           "14:00",
+                          minFontSize: constants.programMinHourFontSize,
+                          maxFontSize: constants.programMaxHourFontSize,
                           style: TextStyle(
-                            fontSize: constraints.maxHeight *
-                                constants.programHourFontSize,
                             fontWeight: FontWeight.w600,
                           ),
+                        ),
                         ),
                         Column(
                           children: [
@@ -116,14 +122,14 @@ class Program extends StatelessWidget {
           Flexible(
               flex: constants.programYellowButtonFlex,
               child: Padding(
-                padding: EdgeInsets.only(
-                    bottom:
-                        constraints.maxHeight * constants.programPaddingBottom),
-                child: HomeYellowButton(
+                  padding: EdgeInsets.only(
+                      bottom: constraints.maxHeight *
+                          constants.programPaddingBottom),
+                  child: const HomeYellowButton(
                     content: "Match Information",
-                    yellowButtonFontSize:
-                        constraints.maxHeight * constants.yellowButtonFontSize),
-              )),
+                    minYellowButtonFontSize: constants.minYellowButtonFontSize,
+                    maxYellowButtonFontSize: constants.maxYellowButtonFontSize,
+                  ))),
         ],
       );
     });

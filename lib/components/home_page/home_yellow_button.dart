@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import './../../assets/constants.dart' as constants;
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeYellowButton extends StatelessWidget {
   final String content;
-  final double yellowButtonFontSize;
-  const HomeYellowButton({Key? key, required this.content, required this.yellowButtonFontSize }) : super(key: key);
+  final double minYellowButtonFontSize;
+  final double maxYellowButtonFontSize;
+
+  const HomeYellowButton(
+      {Key? key, required this.content, required this.minYellowButtonFontSize, required this.maxYellowButtonFontSize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +19,15 @@ class HomeYellowButton extends StatelessWidget {
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(constants.primaryYellow),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(constants.buttonsBorderRadius)),
+          shape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(constants.buttonsBorderRadius)),
         ),
-        child: Text(
+        child: AutoSizeText(
           content,
-          style: TextStyle(
-            fontSize: yellowButtonFontSize,
-          ),
+          maxLines: 1,
+          minFontSize: minYellowButtonFontSize,
+          maxFontSize: maxYellowButtonFontSize,
         ),
       ),
     );

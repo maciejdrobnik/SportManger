@@ -16,6 +16,16 @@ const Color backgroundBox = Colors.white;
 const int homePageBackground = 0xffE4E6EB;
 const int homePageTextColor = 0xff333333;
 
+///Font Sizes
+const double minYellowButtonFontSize = 5;
+const double maxYellowButtonFontSize = 13;
+const double minBlueButtonFontSize = 5;
+const double maxBlueButtonFontSize = 15;
+const double programMinDateFontSize = 17;
+const double programMaxDateFontSize = 30;
+const double programMinHourFontSize = 20;
+const double programMaxHourFontSize = 30;
+
 /// Program Component
 /// The idea of saving font size and padding values like that is to have it in
 /// proportions as in Figma but using Layout Builder we will obtain universal font size
@@ -25,14 +35,11 @@ const double programDateVerticalPadding = 7 / bigWhiteBoxHeight;
 const double programRowPaddingLeft = 45 / bigWhiteBoxWidth;
 const double programRowPaddingRight = 25 / bigWhiteBoxWidth;
 const double programPaddingBottom = 8 / bigWhiteBoxHeight;
+const double programHourPaddingTop = 10 / bigWhiteBoxHeight;
 
-/// Those 3 will need to be changed. I will think about it later
+/// Those 2 will need to be changed. I will think about it later
 const double programIconSize = 20;
 const double programRaiseDateAndIcon = 20;
-const double yellowButtonFontSize = 10 / bigWhiteBoxHeight;
-const double blueButtonFontSize = 18 / bigWhiteBoxHeight;
-const double programDateFontSize = 18 / bigWhiteBoxHeight;
-const double programHourFontSize = 20 / bigWhiteBoxHeight;
 
 /// Flex values for main column
 const int programBlueButtonFlex = 24;

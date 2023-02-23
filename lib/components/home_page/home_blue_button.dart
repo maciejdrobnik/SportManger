@@ -1,11 +1,17 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import './../../assets/constants.dart' as constants;
 
 class HomeBlueButton extends StatelessWidget {
   final String content;
-  final double blueButtonFontSize;
+  final double minBlueButtonFontSize;
+  final double maxBlueButtonFontSize;
+
   const HomeBlueButton(
-      {Key? key, required this.content, required this.blueButtonFontSize})
+      {Key? key,
+      required this.content,
+      required this.minBlueButtonFontSize,
+      required this.maxBlueButtonFontSize})
       : super(key: key);
 
   @override
@@ -21,11 +27,11 @@ class HomeBlueButton extends StatelessWidget {
               borderRadius:
                   BorderRadius.circular(constants.buttonsBorderRadius)),
         ),
-        child: Text(
+        child: AutoSizeText(
           content,
-          style: TextStyle(
-            fontSize: blueButtonFontSize,
-          ),
+          maxLines: 1,
+          minFontSize: minBlueButtonFontSize,
+          maxFontSize: maxBlueButtonFontSize,
         ),
       ),
     );
