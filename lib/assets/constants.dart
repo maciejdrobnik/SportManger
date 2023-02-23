@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Home Page  Constants
 const int primaryBlue = 0xff082140;
+const int primaryYellow = 0xffEFCA3E;
 const double homePagePaddingVertical = 20.0;
 const double homePagePaddingHorizontal = 15.0;
 const double homePageContainerBorderRadius = 10.0;
@@ -15,8 +16,13 @@ const double programPaddingTop = 10;
 const double programDateVerticalPadding = 7;
 const double programRowPaddingLeft = 45;
 const double programRowPaddingRight = 25;
+const double programPaddingBottom = 10;
 const double breakBetweenLogoAndName = 3;
 const double programIconSize = 20;
-const double programRaiseDateAndIcon = 20; ///probably the name here is not the best
+const double programRaiseDateAndIcon = 20;
+const double yellowbuttonSize = 12;
+const double bluebuttonSize = 22;
+
+///probably the name here is not the best
 const double programDateFontSize = 18;
 const double programHourFontSize = 20;
