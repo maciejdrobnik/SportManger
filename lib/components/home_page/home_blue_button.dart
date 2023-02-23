@@ -7,19 +7,18 @@ class HomeBlueButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 185,
-      height: 40,
-      child: ElevatedButton(
-        onPressed: (){},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(constants.primaryBlue),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50)
+    return FractionallySizedBox(
+        widthFactor: 0.46,
+        alignment: FractionalOffset.topCenter,
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(constants.primaryBlue),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           ),
+          child: Text(content),
         ),
-        child: Text(content),
-      ),
     );
   }
 }

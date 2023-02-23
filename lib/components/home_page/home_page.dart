@@ -21,10 +21,21 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color(constants.homePageBackground),
       body: Padding(
         padding: const EdgeInsets.only(
-            left: constants.homePagePaddingHorizontal, right:constants.homePagePaddingHorizontal, top: constants.homePagePaddingVertical ),
+            left: constants.homePagePaddingHorizontal,
+            right: constants.homePagePaddingHorizontal,
+            top: constants.homePagePaddingVertical),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [WhiteContainer(flexValue: 2, content: Agenda()), WhiteContainer(flexValue: 2, content:Program()), WhiteContainer(flexValue: 2, content:Chores()), WhiteContainer(flexValue: 1, content:Sponsor())],
+          children: const [
+            WhiteContainer(
+                flexValue: constants.bigWhiteBoxFlex, content: Agenda()),
+            WhiteContainer(
+                flexValue: constants.bigWhiteBoxFlex, content: Program()),
+            WhiteContainer(
+                flexValue: constants.bigWhiteBoxFlex, content: Chores()),
+            WhiteContainer(
+                flexValue: constants.smallWhiteBoxFlex, content: Sponsor())
+          ],
         ),
       ),
     );

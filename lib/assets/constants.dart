@@ -6,6 +6,7 @@ const double homePagePaddingVertical = 20.0;
 const double homePagePaddingHorizontal = 15.0;
 const double homePageContainerBorderRadius = 10.0;
 const int bigWhiteBoxFlex = 2;
+const int smallWhiteBoxFlex = 1;
 const Color backgroundBox = Colors.white;
 const int homePageBackground = 0xffE4E6EB;
 const int homePageTextColor = 0xff333333;
