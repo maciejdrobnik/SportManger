@@ -18,19 +18,26 @@ class Program extends StatelessWidget {
           Flexible(
             flex: constants.programBlueButtonFlex,
             child: Padding(
-              padding: EdgeInsets.only(top: constraints.maxHeight * constants.programPaddingTop),
-              child: HomeBlueButton(content: "Program", blueButtonFontSize: constraints.maxHeight * constants.blueButtonFontSize,),
+              padding: EdgeInsets.only(
+                  top: constraints.maxHeight * constants.programPaddingTop),
+              child: HomeBlueButton(
+                content: "Program",
+                blueButtonFontSize:
+                    constraints.maxHeight * constants.blueButtonFontSize,
+              ),
             ),
           ),
           Flexible(
             flex: constants.programDateFlex,
             child: Padding(
                 padding: EdgeInsets.symmetric(
-                    vertical: constraints.maxHeight * constants.programDateVerticalPadding),
+                    vertical: constraints.maxHeight *
+                        constants.programDateVerticalPadding),
                 child: Text(
                   "Sunday February 13 2022",
                   style: TextStyle(
-                    fontSize: constraints.maxHeight * constants.programDateFontSize,
+                    fontSize:
+                        constraints.maxHeight * constants.programDateFontSize,
                     color: const Color(constants.homePageTextColor),
                     fontWeight: FontWeight.w600,
                     overflow: TextOverflow.visible,
@@ -42,7 +49,8 @@ class Program extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                   left: constraints.maxWidth * constants.programRowPaddingLeft,
-                  right:constraints.maxWidth * constants.programRowPaddingRight),
+                  right:
+                      constraints.maxWidth * constants.programRowPaddingRight),
               child: Row(
                 children: [
                   Flexible(
@@ -59,13 +67,16 @@ class Program extends StatelessWidget {
                               flex: constants.programBreakBetweenLogAndNameFlex,
                               child: Container(),
                             ),
-                            const Flexible(flex: constants.programTeamNameFlex, child: Text("Team1")),
+                            const Flexible(
+                                flex: constants.programTeamNameFlex,
+                                child: Text("Team1")),
                           ],
                         ),
                         Text(
                           "14:00",
                           style: TextStyle(
-                            fontSize: constraints.maxHeight * constants.programHourFontSize,
+                            fontSize: constraints.maxHeight *
+                                constants.programHourFontSize,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -76,9 +87,12 @@ class Program extends StatelessWidget {
                               child: Image.asset("lib/assets/images/logo2.png"),
                             ),
                             Flexible(
-                              flex: constants.programBreakBetweenLogAndNameFlex,
-                              child: Container()),
-                            const Flexible(flex: constants.programTeamNameFlex, child: Text("Team2")),
+                                flex:
+                                    constants.programBreakBetweenLogAndNameFlex,
+                                child: Container()),
+                            const Flexible(
+                                flex: constants.programTeamNameFlex,
+                                child: Text("Team2")),
                           ],
                         ),
                       ],
@@ -100,12 +114,16 @@ class Program extends StatelessWidget {
             ),
           ),
           Flexible(
-            flex: constants.programYellowButtonFlex,
-            child: Padding(
-              padding:EdgeInsets.only(bottom: constraints.maxHeight * constants.programPaddingBottom),
-              child:HomeYellowButton(content: "Match Information", yellowButtonFontSize: constraints.maxHeight * 10 / 180),
-          )
-          ),
+              flex: constants.programYellowButtonFlex,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    bottom:
+                        constraints.maxHeight * constants.programPaddingBottom),
+                child: HomeYellowButton(
+                    content: "Match Information",
+                    yellowButtonFontSize:
+                        constraints.maxHeight * constants.yellowButtonFontSize),
+              )),
         ],
       );
     });
