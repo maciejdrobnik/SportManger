@@ -8,8 +8,12 @@ class MatchTaskModel extends TaskModel {
   final String pitch;
   final String place;
   final String referee;
-  final String team1id;
-  final String team2id;
+  final String team1Id;
+  final String team1Name;
+  final String team1Logo;
+  final String team2Id;
+  final String team2Name;
+  final String team2Logo;
 
   MatchTaskModel(
       {required super.id,
@@ -24,6 +28,10 @@ class MatchTaskModel extends TaskModel {
       required this.pitch,
       required this.place,
       required this.referee,
-      required this.team1id,
-      required this.team2id});
+      required this.team1Id,
+      required this.team1Name,
+      required this.team1Logo,
+      required this.team2Id,
+      required this.team2Name,
+      required this.team2Logo});
 }

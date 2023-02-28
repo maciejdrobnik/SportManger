@@ -8,6 +8,9 @@ import '../../services/firebase_service.dart';
 import './../../assets/constants.dart' as constants;
 import 'home_blue_button.dart';
 
+const List<String> weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const List<String> months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 class Program extends StatefulWidget {
   const Program({Key? key}) : super(key: key);
 
@@ -45,6 +48,21 @@ class _ProgramState extends State<Program> {
     return [];
   }
 
+  String getHourFromTimeStamp(timeStamp) {
+    DateTime date = timeStamp.toDate();
+    int hour = date.hour;
+    int minute = date.minute;
+    return minute > 10 ? "$hour:$minute" : "$hour:${minute}0";
+}
+
+  String getDateFromTimeStamp(timeStamp) {
+    DateTime date = timeStamp.toDate();
+    int weekDay = date.weekday;
+    int day = date.day;
+    int month = date.month;
+    int year = date.year;
+    return "${weekDays[weekDay-1]} ${months[month-1]} $day $year";
+  }
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -78,12 +96,12 @@ class _ProgramState extends State<Program> {
                             padding: EdgeInsets.symmetric(
                                 vertical: constraints.maxHeight *
                                     constants.programDateVerticalPadding),
-                            child: const AutoSizeText(
-                              "Sunday February 13 2022",
+                            child: AutoSizeText(
+                              getDateFromTimeStamp(snapshot.data!.first.start),
                               maxLines: 1,
                               maxFontSize: constants.programMaxDateFontSize,
                               minFontSize: constants.programMinDateFontSize,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Color(constants.homePageTextColor),
                                 fontWeight: FontWeight.w600,
                                 overflow: TextOverflow.visible,
@@ -120,20 +138,20 @@ class _ProgramState extends State<Program> {
                                         ),
                                         Flexible(
                                             flex: constants.programTeamNameFlex,
-                                            child: Text(snapshot.data![0].team1id)),
+                                            child: Text(snapshot.data![0].team1Name)),
                                       ],
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(
                                           top: constraints.maxHeight *
                                               constants.programHourPaddingTop),
-                                      child: const AutoSizeText(
-                                        "14:00",
+                                      child:  AutoSizeText(
+                                        getHourFromTimeStamp(snapshot.data!.first.arrival),
                                         minFontSize: constants
                                             .programMinHourFontSize,
                                         maxFontSize: constants
                                             .programMaxHourFontSize,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
@@ -151,7 +169,7 @@ class _ProgramState extends State<Program> {
                                             child: Container()),
                                         Flexible(
                                             flex: constants.programTeamNameFlex,
-                                            child: Text(snapshot.data![0].team2id)),
+                                            child: Text(snapshot.data![0].team2Name)),
                                       ],
                                     ),
                                   ],
@@ -189,18 +207,18 @@ class _ProgramState extends State<Program> {
                   );
                 }
                 else{
-                  return Text("There are no matches for you");
+                  return const Text("There are no matches for you");
                 }
               }
               else if (snapshot.hasError) {
-                return Text("Something went wrong");
+                return const Text("Something went wrong");
               }
               else{
-                return Text("I don't know what else can happen");
+                return const Text("I don't know what else can happen");
               }
             }
             else{
-              return Text("Wait a second");
+              return const Text("Wait a second");
             }
           });
     });

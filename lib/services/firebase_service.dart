@@ -54,8 +54,12 @@ class FirebaseService {
                       pitch: value.docs[i].data()["pitch"],
                       place: value.docs[i].data()["place"],
                       referee: value.docs[i].data()["referee"],
-                      team1id: value.docs[i].data()["team1Id"],
-                      team2id: value.docs[i].data()["team2Id"]))
+                      team1Id: value.docs[i].data()["team1Id"],
+                      team1Logo: value.docs[i].data()["team1Logo"],
+                      team1Name: value.docs[i].data()["team1Name"],
+                      team2Id: value.docs[i].data()["team2Id"],
+                      team2Logo: value.docs[i].data()["team2Logo"],
+                      team2Name: value.docs[i].data()["team2Name"]))
                 }
             });
     return matches;
