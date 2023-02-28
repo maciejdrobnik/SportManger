@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Home Page  Constants
+// Home Page  Constants
 const double bigWhiteBoxHeight = 180;
 const double bigWhiteBoxWidth = 354;
 const double homePageHeight = 770;
@@ -16,7 +16,7 @@ const Color backgroundBox = Colors.white;
 const int homePageBackground = 0xffE4E6EB;
 const int homePageTextColor = 0xff333333;
 
-///Font Sizes
+//Font Sizes
 const double minYellowButtonFontSize = 5;
 const double maxYellowButtonFontSize = 13;
 const double minBlueButtonFontSize = 5;
@@ -35,7 +35,7 @@ const double programDateVerticalPadding = 7 / bigWhiteBoxHeight;
 const double programRowPaddingLeft = 45 / bigWhiteBoxWidth;
 const double programRowPaddingRight = 25 / bigWhiteBoxWidth;
 const double programPaddingBottom = 8 / bigWhiteBoxHeight;
-const double programHourPaddingTop = 10 / bigWhiteBoxHeight;
+const double programHourPaddingTop = 20 / bigWhiteBoxHeight;
 
 /// Those 2 will need to be changed. I will think about it later
 const double programIconSize = 20;

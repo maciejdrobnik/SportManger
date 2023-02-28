@@ -3,7 +3,7 @@ import 'package:sport_manager/components/home_page/sponsor.dart';
 import 'package:sport_manager/components/home_page/white_container.dart';
 import 'agenda.dart';
 import 'chores.dart';
-import 'program.dart';
+import 'program_page/program_main.dart';
 import './../../assets/constants.dart' as constants;
 
 class HomePage extends StatelessWidget {
@@ -35,7 +35,8 @@ class HomePage extends StatelessWidget {
                   WhiteContainer(
                       flexValue: constants.bigWhiteBoxFlex, content: Agenda()),
                   WhiteContainer(
-                      flexValue: constants.bigWhiteBoxFlex, content: Program()),
+                      flexValue: constants.bigWhiteBoxFlex,
+                      content: ProgramMain()),
                   WhiteContainer(
                       flexValue: constants.bigWhiteBoxFlex, content: Chores()),
                   WhiteContainer(
