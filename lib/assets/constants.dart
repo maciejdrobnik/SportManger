@@ -56,3 +56,10 @@ const int programTeamNameFlex = 16;
 const double widthFactorYellowButton = 0.36;
 const double widthFactorBlueButton = 0.46;
 const double buttonsBorderRadius = 50;
+
+///Chores
+const double widthNameContainer = 250;
+const double heightNameContainer = 70;
+
+const double choresAssgineesPaddingTop = 3;
+const double choresAssigneesFontSize = 15;
