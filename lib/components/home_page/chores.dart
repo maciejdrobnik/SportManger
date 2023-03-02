@@ -25,11 +25,11 @@ class Chores extends StatelessWidget {
                   return Column(
                     children: [
                       Flexible(
-                        flex: constants.programBlueButtonFlex,
+                        flex: constants.choresBlueButtonFlex,
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight *
-                                  constants.programPaddingTop),
+                                  constants.choresPaddingTop),
                           child: const HomeBlueButton(
                             content: "Chores",
                             minBlueButtonFontSize:
@@ -40,16 +40,16 @@ class Chores extends StatelessWidget {
                         ),
                       ),
                       Flexible(
-                        flex: constants.programDateFlex,
+                        flex: constants.choresDateFlex,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: constraints.maxHeight *
-                                  constants.programDateVerticalPadding),
+                                  constants.choresDateVerticalPadding),
                           child: AutoSizeText(
                             "${timestampService.getDayandMonthFromTimeStamp(snapshot.data!.first.start)} til ${timestampService.getDayandMonthFromTimeStamp(snapshot.data!.first.end)}",
                             maxLines: 1,
-                            maxFontSize: constants.programMaxDateFontSize,
-                            minFontSize: constants.programMinDateFontSize,
+                            maxFontSize: constants.choresMaxDateFontSize,
+                            minFontSize: constants.choresMinDateFontSize,
                             style: const TextStyle(
                               color: Color(constants.homePageTextColor),
                               fontWeight: FontWeight.w600,
@@ -59,32 +59,41 @@ class Chores extends StatelessWidget {
                         ),
                       ),
                       Flexible(
-                        flex: constants.programTeamsRowFlex,
+                        flex: constants.choresAssigneesFlex,
                         child: Padding(
-                          padding: const EdgeInsets.all(7),
+                          padding: EdgeInsets.symmetric(
+                              vertical: constraints.maxHeight *
+                                  constants.choresAssigneesVerticalPadding),
                           child: Column(
                             children: snapshot.data![0].assignees.map((e) {
                               return Container(
-                                  padding: EdgeInsets.only(
-                                      top: constraints.maxHeight *
-                                          constants.choresAssgineesPaddingTop),
-                                  child: Text(
-                                    e,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                        fontSize:
-                                            constants.choresAssigneesFontSize),
-                                  ));
+                                padding: EdgeInsets.only(
+                                    top: constraints.maxHeight *
+                                        constants.choresAssigneesLineHeight),
+                                child: AutoSizeText(
+                                  e,
+                                  maxLines: 1,
+                                  maxFontSize:
+                                      constants.choresMaxAssigneesFontSize,
+                                  minFontSize:
+                                      constants.choresMinAssigneesFontSize,
+                                  style: const TextStyle(
+                                    color: Color(constants.homePageTextColor),
+                                    fontWeight: FontWeight.w400,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              );
                             }).toList(),
                           ),
                         ),
                       ),
                       Flexible(
-                        flex: constants.programYellowButtonFlex,
+                        flex: constants.choresYellowButtonFlex,
                         child: Padding(
                           padding: EdgeInsets.only(
                               bottom: constraints.maxHeight *
-                                  constants.programPaddingBottom),
+                                  constants.choresPaddingBottom),
                           child: const HomeYellowButton(
                             content: "Tasklist",
                             minYellowButtonFontSize:
@@ -97,7 +106,7 @@ class Chores extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return const Text("There are no matches for you");
+                  return const Text("There are no chores in your team");
                 }
               } else if (snapshot.hasError) {
                 return const Text("Something went wrong");

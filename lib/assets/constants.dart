@@ -17,6 +17,7 @@ const int homePageBackground = 0xffE4E6EB;
 const int homePageTextColor = 0xff333333;
 
 //Font Sizes
+//program
 const double minYellowButtonFontSize = 5;
 const double maxYellowButtonFontSize = 13;
 const double minBlueButtonFontSize = 5;
@@ -25,6 +26,13 @@ const double programMinDateFontSize = 17;
 const double programMaxDateFontSize = 30;
 const double programMinHourFontSize = 20;
 const double programMaxHourFontSize = 30;
+
+//chores
+const double choresMinDateFontSize = 17;
+const double choresMaxDateFontSize = 30;
+const double choresMinAssigneesFontSize = 15;
+//I don't know proper value for Max
+const double choresMaxAssigneesFontSize = 40;
 
 /// Program Component
 /// The idea of saving font size and padding values like that is to have it in
@@ -57,9 +65,18 @@ const double widthFactorYellowButton = 0.36;
 const double widthFactorBlueButton = 0.46;
 const double buttonsBorderRadius = 50;
 
-///Chores
-const double widthNameContainer = 250;
-const double heightNameContainer = 70;
+///Chores component
+const double choresPaddingTop = 10 / bigWhiteBoxHeight;
+const double choresAssigneesVerticalPadding = 10 / bigWhiteBoxHeight;
+const double choresAssigneesLineHeight = 3 / bigWhiteBoxHeight;
+const double choresDateVerticalPadding = 7 / bigWhiteBoxHeight;
+const double choresRowPaddingLeft = 45 / bigWhiteBoxWidth;
+const double choresRowPaddingRight = 25 / bigWhiteBoxWidth;
+const double choresPaddingBottom = 8 / bigWhiteBoxHeight;
+const double choresHourPaddingTop = 20 / bigWhiteBoxHeight;
 
-const double choresAssgineesPaddingTop = 3 / bigWhiteBoxHeight;
-const double choresAssigneesFontSize = 15;
+//Flex
+const int choresBlueButtonFlex = 24;
+const int choresDateFlex = 17;
+const int choresAssigneesFlex = 42;
+const int choresYellowButtonFlex = 17;
