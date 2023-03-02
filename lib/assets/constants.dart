@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Home Page  Constants
+//* Home Page Component
 const double bigWhiteBoxHeight = 180;
 const double bigWhiteBoxWidth = 354;
 const double homePageHeight = 770;
@@ -26,9 +26,9 @@ const double programMaxDateFontSize = 30;
 const double programMinHourFontSize = 20;
 const double programMaxHourFontSize = 30;
 
-/// Program Component
-/// The idea of saving font size and padding values like that is to have it in
-/// proportions as in Figma but using Layout Builder we will obtain universal font size
+//* Program Component
+// The idea of saving font size and padding values like that is to have it in
+// proportions as in Figma but using Layout Builder we will obtain universal font size
 
 const double programPaddingTop = 10 / bigWhiteBoxHeight;
 const double programDateVerticalPadding = 7 / bigWhiteBoxHeight;
@@ -37,22 +37,42 @@ const double programRowPaddingRight = 25 / bigWhiteBoxWidth;
 const double programPaddingBottom = 8 / bigWhiteBoxHeight;
 const double programHourPaddingTop = 20 / bigWhiteBoxHeight;
 
-/// Those 2 will need to be changed. I will think about it later
+// Those 2 will need to be changed. I will think about it later
 const double programIconSize = 20;
 const double programRaiseDateAndIcon = 20;
 
-/// Flex values for main column
+// Flex values for main column
 const int programBlueButtonFlex = 24;
 const int programDateFlex = 17;
 const int programTeamsRowFlex = 42;
 const int programYellowButtonFlex = 17;
 
-/// Flex values for team row
+// Flex values for team row
 const int programTeamLogoFlex = 56;
 const int programBreakBetweenLogAndNameFlex = 3;
 const int programTeamNameFlex = 16;
 
-///Buttons
+//Buttons
 const double widthFactorYellowButton = 0.36;
 const double widthFactorBlueButton = 0.46;
 const double buttonsBorderRadius = 50;
+
+//* Calendar component
+
+// Flex values for calendar_main widget
+const int calendarBlueButtonFlex = 43;
+const int calendarMonthFlex = 23;
+const int calendarFlex = 56;
+const int calendarTaskFlex = 58;
+
+// Padding values
+const double calendarPaddingTop = 9 / bigWhiteBoxHeight;
+const double calendarMonthTextPaddingLeft = 12 / bigWhiteBoxWidth;
+const double calendarMonthTextPaddingTop = 3 / bigWhiteBoxHeight;
+
+// Auto Size Month Text
+const double calendarMonthTextMinFontSize = 12;
+const double calendarMonthTextMaxFontSize = 18;
+
+//! I will need to think about this one. It is not responsive for now
+const double calendarRowHeight = 36;
