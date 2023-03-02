@@ -53,8 +53,11 @@ class CalendarMain extends StatelessWidget {
               rowHeight: constants.calendarRowHeight,
             ),
           ),
-          const Flexible(
-              flex: constants.calendarTaskFlex, child: CalendarTask()),
+          Flexible(
+              flex: constants.calendarTaskFlex,
+              child: CalendarTask(
+                parentConstraints: constraints,
+              )),
         ],
       );
     });

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//TODO: Set the reboto as a theme font for whole application
 //* Home Page Component
 const double bigWhiteBoxHeight = 180;
 const double bigWhiteBoxWidth = 354;
@@ -76,3 +77,11 @@ const double calendarMonthTextMaxFontSize = 18;
 
 //! I will need to think about this one. It is not responsive for now
 const double calendarRowHeight = 36;
+
+// Flex values for task row
+const int calendarTaskWhiteBoxFlex = 13;
+const int calendarTaskYellowBoxFlex = 4;
+const int calendarTaskNameFlex = 287;
+const int calendarTaskTimeFlex = 46;
+
+const double calendarTaskYellowBoxHeight = 22 / bigWhiteBoxHeight;
