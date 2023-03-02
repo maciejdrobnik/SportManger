@@ -61,5 +61,5 @@ const double buttonsBorderRadius = 50;
 const double widthNameContainer = 250;
 const double heightNameContainer = 70;
 
-const double choresAssgineesPaddingTop = 3;
+const double choresAssgineesPaddingTop = 3 / bigWhiteBoxHeight;
 const double choresAssigneesFontSize = 15;
