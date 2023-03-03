@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sport_manager/components/home_page/sponsor.dart';
 import 'package:sport_manager/components/home_page/white_container.dart';
-import 'agenda.dart';
+import 'calendar_page/calendar_main.dart';
 import 'chores.dart';
 import 'program_page/program_main.dart';
 import './../../assets/constants.dart' as constants;
@@ -33,7 +33,8 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: const [
                   WhiteContainer(
-                      flexValue: constants.bigWhiteBoxFlex, content: Agenda()),
+                      flexValue: constants.bigWhiteBoxFlex,
+                      content: CalendarMain()),
                   WhiteContainer(
                       flexValue: constants.bigWhiteBoxFlex,
                       content: ProgramMain()),
