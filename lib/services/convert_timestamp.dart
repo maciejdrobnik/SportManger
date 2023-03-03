@@ -38,4 +38,11 @@ class ConvertTimestampService {
     int year = date.year;
     return "${weekDays[weekDay - 1]} ${months[month - 1]} $day $year";
   }
+
+  String getDayandMonthFromTimeStamp(timeStamp) {
+    DateTime date = timeStamp.toDate();
+    int day = date.day;
+    int month = date.month;
+    return "${months[month - 1]} $day";
+  }
 }
