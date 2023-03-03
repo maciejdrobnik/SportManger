@@ -87,4 +87,12 @@ const int calendarTaskYellowBoxFlex = 4;
 const int calendarTaskNameFlex = 287;
 const int calendarTaskTimeFlex = 46;
 
+// Yellow Box
 const double calendarTaskYellowBoxHeight = 22 / bigWhiteBoxHeight;
+const double calendarYellowBoxBorderRadius = 2;
+
+// Font Sizes
+const double calendarTaskNameMaxFontSize = 17;
+const double calendarTaskNameMinFontSize = 16;
+const double calendarTaskDescriptionMaxFontSize = 17;
+const double calendarTaskDescriptionMinFontSize = 16;
