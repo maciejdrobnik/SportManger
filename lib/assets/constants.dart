@@ -11,11 +11,12 @@ const int primaryYellow = 0xffEFCA3E;
 const double homePagePaddingVertical = 17 / homePageHeight;
 const double homePagePaddingHorizontal = 18 / homePageWidth;
 const double homePageContainerBorderRadius = 10;
-const int bigWhiteBoxFlex = 2;
-const int smallWhiteBoxFlex = 1;
+const int bigWhiteBoxFlex = 180;
+const int smallWhiteBoxFlex = 124;
 const Color backgroundBox = Colors.white;
 const int homePageBackground = 0xffE4E6EB;
 const int homePageTextColor = 0xff333333;
+const double homePageLowerOpacity = 0.6;
 
 //Font Sizes
 const double minYellowButtonFontSize = 5;
@@ -70,6 +71,8 @@ const int calendarTaskFlex = 58;
 const double calendarPaddingTop = 9 / bigWhiteBoxHeight;
 const double calendarMonthTextPaddingLeft = 12 / bigWhiteBoxWidth;
 const double calendarMonthTextPaddingTop = 3 / bigWhiteBoxHeight;
+const double calendarBetweenHoursPadding = 4 / bigWhiteBoxHeight;
+const double calendarTaskNamePaddingLeft = 7 / bigWhiteBoxWidth;
 
 // Auto Size Month Text
 const double calendarMonthTextMinFontSize = 12;

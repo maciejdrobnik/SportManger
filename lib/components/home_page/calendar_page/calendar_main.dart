@@ -46,8 +46,8 @@ class CalendarMain extends StatelessWidget {
             flex: constants.calendarFlex,
             child: TableCalendar(
               focusedDay: DateTime.now(),
-              firstDay: DateTime(2023, 2, 27),
-              lastDay: DateTime(2023, 3, 5),
+              firstDay: DateTime(2022, 2, 27),
+              lastDay: DateTime(2024, 3, 5),
               calendarFormat: CalendarFormat.week,
               headerVisible: false,
               rowHeight: constants.calendarRowHeight,

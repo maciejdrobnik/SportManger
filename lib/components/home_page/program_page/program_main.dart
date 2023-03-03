@@ -7,14 +7,9 @@ import '../../../services/firebase_service.dart';
 import '../../../assets/constants.dart' as constants;
 import '../home_blue_button.dart';
 
-class ProgramMain extends StatefulWidget {
+class ProgramMain extends StatelessWidget {
   const ProgramMain({Key? key}) : super(key: key);
 
-  @override
-  State<ProgramMain> createState() => _ProgramMainState();
-}
-
-class _ProgramMainState extends State<ProgramMain> {
   @override
   Widget build(BuildContext context) {
     FirebaseService firebaseService = FirebaseService();

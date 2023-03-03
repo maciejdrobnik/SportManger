@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../../../assets/constants.dart' as constants;
 
@@ -18,26 +19,35 @@ class CalendarTask extends StatelessWidget {
                 parentConstraints.maxHeight,
             decoration: BoxDecoration(
               color: Colors.yellow,
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(
+                  constants.calendarYellowBoxBorderRadius),
             ),
           ),
         ),
         Expanded(
             flex: constants.calendarTaskNameFlex,
             child: Padding(
-                padding: const EdgeInsets.only(left: 5),
+                padding: EdgeInsets.only(
+                    left: parentConstraints.maxWidth *
+                        constants.calendarTaskNamePaddingLeft),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    const AutoSizeText(
                       "Training",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      minFontSize: constants.calendarTaskNameMinFontSize,
+                      maxFontSize: constants.calendarTaskNameMaxFontSize,
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
-                    Text("Tactical training for FC Ball",
+                    AutoSizeText("Tactical training for FC Ball",
+                        minFontSize:
+                            constants.calendarTaskDescriptionMinFontSize,
+                        maxFontSize:
+                            constants.calendarTaskDescriptionMaxFontSize,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xff123456).withOpacity(0.6),
+                          color: const Color(constants.homePageTextColor)
+                              .withOpacity(constants.homePageLowerOpacity),
                         ))
                   ],
                 ))),
@@ -46,18 +56,25 @@ class CalendarTask extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "10:00",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xff123456).withOpacity(0.6),
+                Padding(
+                  padding: EdgeInsets.only(
+                      bottom: constants.calendarBetweenHoursPadding *
+                          parentConstraints.maxHeight),
+                  child: Text(
+                    "10:00",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: const Color(constants.homePageTextColor)
+                          .withOpacity(constants.homePageLowerOpacity),
+                    ),
                   ),
                 ),
                 Text(
                   "12:00",
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    color: const Color(0xff123456).withOpacity(0.6),
+                    color: const Color(constants.homePageTextColor)
+                        .withOpacity(constants.homePageLowerOpacity),
                   ),
                 )
               ],
