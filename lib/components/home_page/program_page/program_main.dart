@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_manager/components/home_page/home_yellow_button.dart';
 import 'package:sport_manager/components/home_page/program_page/teams_row.dart';
+import 'package:sport_manager/components/sub_pages/program_details.dart';
 import 'package:sport_manager/services/convert_timestamp.dart';
 import '../../../services/firebase_service.dart';
 import '../../../assets/constants.dart' as constants;
@@ -67,12 +68,19 @@ class ProgramMain extends StatelessWidget {
                               padding: EdgeInsets.only(
                                   bottom: constraints.maxHeight *
                                       constants.programPaddingBottom),
-                              child: const HomeYellowButton(
+                              child: HomeYellowButton(
                                 content: "Match Information",
                                 minYellowButtonFontSize:
                                     constants.minYellowButtonFontSize,
                                 maxYellowButtonFontSize:
                                     constants.maxYellowButtonFontSize,
+                                onClick: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ProgramDetails()));
+                                },
                               ))),
                     ],
                   );

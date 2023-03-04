@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_manager/components/sub_pages/chores_details.dart';
 import 'package:sport_manager/services/firebase_service.dart';
 import './../../assets/constants.dart' as constants;
 import './home_blue_button.dart';
@@ -42,8 +43,8 @@ class Chores extends StatelessWidget {
                       Flexible(
                         flex: constants.choresDateFlex,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: constraints.maxHeight *
+                          padding: EdgeInsets.only(
+                              top: constraints.maxHeight *
                                   constants.choresDateVerticalPadding),
                           child: AutoSizeText(
                             "${timestampService.getDayandMonthFromTimeStamp(snapshot.data!.first.start)} til ${timestampService.getDayandMonthFromTimeStamp(snapshot.data!.first.end)}",
@@ -61,8 +62,8 @@ class Chores extends StatelessWidget {
                       Flexible(
                         flex: constants.choresAssigneesFlex,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: constraints.maxHeight *
+                          padding: EdgeInsets.only(
+                              bottom: constraints.maxHeight *
                                   constants.choresAssigneesVerticalPadding),
                           child: Column(
                             children: snapshot.data![0].assignees.map((e) {
@@ -94,12 +95,19 @@ class Chores extends StatelessWidget {
                           padding: EdgeInsets.only(
                               bottom: constraints.maxHeight *
                                   constants.choresPaddingBottom),
-                          child: const HomeYellowButton(
+                          child: HomeYellowButton(
                             content: "Tasklist",
                             minYellowButtonFontSize:
                                 constants.minYellowButtonFontSize,
                             maxYellowButtonFontSize:
                                 constants.maxYellowButtonFontSize,
+                            onClick: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ChoresDetails()));
+                            },
                           ),
                         ),
                       ),
