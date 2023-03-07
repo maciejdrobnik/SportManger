@@ -4,6 +4,7 @@ enum TasksTypes { match, training, other }
 
 class TaskModel {
   final String id;
+  final String name;
   final List<dynamic> assignees;
   final String description;
   final Timestamp end;
@@ -12,6 +13,7 @@ class TaskModel {
 
   const TaskModel(
       {required this.id,
+      required this.name,
       required this.assignees,
       required this.description,
       required this.end,

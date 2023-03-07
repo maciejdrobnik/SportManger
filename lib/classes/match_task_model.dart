@@ -17,6 +17,7 @@ class MatchTaskModel extends TaskModel {
 
   MatchTaskModel(
       {required super.id,
+      required super.name,
       required super.assignees,
       required super.description,
       required super.end,

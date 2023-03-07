@@ -67,7 +67,6 @@ const double widthFactorYellowButton = 0.36;
 const double widthFactorBlueButton = 0.46;
 const double buttonsBorderRadius = 50;
 
-
 //* Calendar component
 
 // Flex values for calendar_main widget

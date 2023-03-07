@@ -56,6 +56,7 @@ class FirebaseService {
                   {
                     matches.add(MatchTaskModel(
                         id: value.docs[i].data()["id"],
+                        name: value.docs[i].data()["name"],
                         assignees: value.docs[i].data()["assignees"],
                         description: value.docs[i].data()["description"],
                         end: value.docs[i].data()["end"],
@@ -78,4 +79,46 @@ class FirebaseService {
     }
     return matches;
   }
+
+  Future<List<TaskModel>> getTasks(DateTime date) async {
+    DateTime startTime = DateTime(date.year, date.month, date.day);
+    DateTime endTime = DateTime(date.year, date.month, date.day);
+    Timestamp startTimeStamp = Timestamp.fromDate(startTime);
+    Timestamp endTimeStamp = Timestamp.fromDate(endTime);
+    List<TaskModel> tasks = [];
+    print(startTimeStamp);
+    print(endTimeStamp);
+    final currentUserData = await getUserData();
+    await db
+        .collection("tasks")
+        .where("id", whereIn: currentUserData.tasksid)
+        .where("start", isGreaterThan: startTimeStamp)
+        .where("start", isLessThan: endTimeStamp)
+        .get()
+        .then((value) => {
+              for (var i = 0; i < value.size; i++)
+                {
+                  tasks.add(TaskModel(
+                    id: value.docs[i].data()["id"],
+                    name: value.docs[i].data()["name"],
+                    assignees: value.docs[i].data()["assignees"],
+                    description: value.docs[i].data()["description"],
+                    end: value.docs[i].data()["end"],
+                    start: value.docs[i].data()["start"],
+                    type: TasksTypes.match,
+                  )),
+                }
+            });
+    return tasks;
+  }
+
+  // Future<TaskModel> getFirstTask(DateTime date) async {
+  //   final currentUserData = await getUserData();
+  //   await db
+  //       .collection("tasks")
+  //       .where("id", whereIn: currentUserData.tasksid)
+  //       .get()
+  //       .then((value) => {});
+  //   return tasks;
+  // }
 }
