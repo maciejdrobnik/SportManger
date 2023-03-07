@@ -17,12 +17,23 @@ class TeamsRow extends StatelessWidget {
       flex: constants.programTeamsRowFlex,
       child: Padding(
         padding: EdgeInsets.only(
-            left: parentConstraints.maxWidth * constants.programRowPaddingLeft,
+            left: parentConstraints.maxWidth * constants.programRowPaddingLeft/2,
             right:
                 parentConstraints.maxWidth * constants.programRowPaddingRight),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Padding(
+                    padding: EdgeInsets.only(
+                        top: parentConstraints.maxHeight *
+                            constants.programHourPaddingTop,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back_ios_rounded,
+                      size: constants.programIconSize,
+                  )
+            ),
             Flexible(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
