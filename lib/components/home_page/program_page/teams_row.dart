@@ -4,36 +4,69 @@ import 'package:sport_manager/classes/match_task_model.dart';
 import 'package:sport_manager/services/convert_timestamp.dart';
 import '../../../assets/constants.dart' as constants;
 
-class TeamsRow extends StatelessWidget {
+class TeamsRow extends StatefulWidget {
   final BoxConstraints parentConstraints;
   final AsyncSnapshot<List<MatchTaskModel>> dataSnapshot;
+
   const TeamsRow(
-      {super.key, required this.dataSnapshot, required this.parentConstraints});
+      {super.key, 
+      required this.dataSnapshot, 
+      required this.parentConstraints,
+      });
+  @override
+  _TeamsRowState createState() => _TeamsRowState();
+}
+
+class _TeamsRowState extends State<TeamsRow> {
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     ConvertTimestampService timestampService = ConvertTimestampService();
-    return Flexible(
+    Widget padding;
+
+return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return FutureBuilder(
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasData) {
+                // if (snapshot.data!.isNotEmpty) {
+              
+              
+  return Flexible(
       flex: constants.programTeamsRowFlex,
       child: Padding(
         padding: EdgeInsets.only(
-            left: parentConstraints.maxWidth * constants.programRowPaddingLeft / 2,
+            left: widget.parentConstraints.maxWidth * constants.programRowPaddingLeft,
             right:
-                parentConstraints.maxWidth * constants.programRowPaddingRight),
+                widget.parentConstraints.maxWidth * constants.programRowPaddingRight),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            counter == 0 ?
+            Container() : 
             Padding(
                     padding: EdgeInsets.only(
-                        top: parentConstraints.maxHeight *
+                        top: widget.parentConstraints.maxHeight *
                             constants.programHourPaddingTop,
                     ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_rounded,
-                      size: constants.programIconSize,
-                  )
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios_rounded,
+                      size: constants.programIconSize),
+                      onPressed: (){
+                        counter--;
+                      },
+                    ),
+                    
+                  //   const Icon(
+                  //     Icons.arrow_back_ios_rounded,
+                  //     size: constants.programIconSize,
+                  // )
             ),
+
+            
             Flexible(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -51,16 +84,16 @@ class TeamsRow extends StatelessWidget {
                       ),
                       Flexible(
                           flex: constants.programTeamNameFlex,
-                          child: Text(dataSnapshot.data![0].team1Name)),
+                          child: Text(widget.dataSnapshot.data![0].team1Name)),
                     ],
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: parentConstraints.maxHeight *
+                        top: widget.parentConstraints.maxHeight *
                             constants.programHourPaddingTop),
                     child: AutoSizeText(
                       timestampService.getHourFromTimeStamp(
-                          dataSnapshot.data!.first.arrival),
+                          widget.dataSnapshot.data!.first.arrival),
                       minFontSize: constants.programMinHourFontSize,
                       maxFontSize: constants.programMaxHourFontSize,
                       style: const TextStyle(
@@ -79,23 +112,51 @@ class TeamsRow extends StatelessWidget {
                           child: Container()),
                       Flexible(
                           flex: constants.programTeamNameFlex,
-                          child: Text(dataSnapshot.data![0].team2Name)),
+                          child: Text(widget.dataSnapshot.data![0].team2Name)),
                     ],
                   ),
                 ],
               ),
             ),
+            counter == widget.dataSnapshot.data!.length ?
+            Container() : 
             Padding(
                 padding: EdgeInsets.only(
-                    top: parentConstraints.maxHeight *
-                        constants.programHourPaddingTop),
-                child: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: constants.programIconSize,
-                ))
+                    top: widget.parentConstraints.maxHeight *
+                        constants.programHourPaddingTop/2),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_forward_ios_rounded,
+                  size: constants.programIconSize),
+                  // onPressed: _increaseCounter,
+                  onPressed: (){
+                    counter++;
+                  },
+                ),
+            )
           ],
         ),
       ),
     );
-  }
+
+
+//          } else {
+//                   return const Text("There are no matches for you");
+//                 }
+            }else if (snapshot.hasError) {
+                return const Text("Something went wrong");
+              } else {
+                return const Text("I don't know what else can happen");
+              }
+            } else {
+              return const Text("db is not connected");
+            }
+          }
+      );
+        }
+);
+
+
+  
+    
+}
 }

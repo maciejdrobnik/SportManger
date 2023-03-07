@@ -42,7 +42,7 @@ const double choresMaxAssigneesFontSize = 40;
 
 const double programPaddingTop = 10 / bigWhiteBoxHeight;
 const double programDateVerticalPadding = 7 / bigWhiteBoxHeight;
-const double programRowPaddingLeft = 45 / bigWhiteBoxWidth;
+const double programRowPaddingLeft = 45 / bigWhiteBoxWidth / 2;
 const double programRowPaddingRight = 25 / bigWhiteBoxWidth;
 const double programPaddingBottom = 8 / bigWhiteBoxHeight;
 const double programHourPaddingTop = 20 / bigWhiteBoxHeight;
