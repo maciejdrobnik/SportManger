@@ -17,7 +17,7 @@ class TeamsRow extends StatelessWidget {
       flex: constants.programTeamsRowFlex,
       child: Padding(
         padding: EdgeInsets.only(
-            left: parentConstraints.maxWidth * constants.programRowPaddingLeft/2,
+            left: parentConstraints.maxWidth * constants.programRowPaddingLeft / 2,
             right:
                 parentConstraints.maxWidth * constants.programRowPaddingRight),
         child: Row(
