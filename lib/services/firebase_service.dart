@@ -50,6 +50,7 @@ class FirebaseService {
       await db
           .collection("tasks")
           .where("id", whereIn: currentUserData.tasksid)
+          .where("type", isEqualTo: "match")
           .get()
           .then((value) => {
                 for (var i = 0; i < value.size; i++)
@@ -61,7 +62,7 @@ class FirebaseService {
                         description: value.docs[i].data()["description"],
                         end: value.docs[i].data()["end"],
                         start: value.docs[i].data()["start"],
-                        type: TasksTypes.match,
+                        type: "match",
                         dressingRoom: value.docs[i].data()["dressingRoom"],
                         arrival: value.docs[i].data()["arrival"],
                         materials: value.docs[i].data()["materials"],
@@ -81,19 +82,16 @@ class FirebaseService {
   }
 
   Future<List<TaskModel>> getTasks(DateTime date) async {
-    DateTime startTime = DateTime(date.year, date.month, date.day);
-    DateTime endTime = DateTime(date.year, date.month, date.day);
-    Timestamp startTimeStamp = Timestamp.fromDate(startTime);
-    Timestamp endTimeStamp = Timestamp.fromDate(endTime);
+    DateTime startTime = DateTime(date.year, date.month, date.day, 0, 0);
+    DateTime endTime = DateTime(date.year, date.month, date.day, 23, 59, 59);
     List<TaskModel> tasks = [];
-    print(startTimeStamp);
-    print(endTimeStamp);
     final currentUserData = await getUserData();
     await db
         .collection("tasks")
         .where("id", whereIn: currentUserData.tasksid)
-        .where("start", isGreaterThan: startTimeStamp)
-        .where("start", isLessThan: endTimeStamp)
+        .where("start", isGreaterThanOrEqualTo: startTime)
+        .where("start", isLessThanOrEqualTo: endTime)
+        .orderBy("start")
         .get()
         .then((value) => {
               for (var i = 0; i < value.size; i++)
@@ -105,7 +103,7 @@ class FirebaseService {
                     description: value.docs[i].data()["description"],
                     end: value.docs[i].data()["end"],
                     start: value.docs[i].data()["start"],
-                    type: TasksTypes.match,
+                    type: value.docs[i].data()["type"],
                   )),
                 }
             });

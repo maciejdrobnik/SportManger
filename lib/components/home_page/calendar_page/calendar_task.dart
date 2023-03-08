@@ -17,82 +17,101 @@ class CalendarTask extends StatelessWidget {
     return FutureBuilder(
       future: service.getTasks(selectedDate),
       builder: (context, snapshot) {
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Flexible(
-                flex: constants.calendarTaskWhiteBoxFlex, child: Container()),
-            Flexible(
-              flex: constants.calendarTaskYellowBoxFlex,
-              child: Container(
-                height: constants.calendarTaskYellowBoxHeight *
-                    parentConstraints.maxHeight,
-                decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.circular(
-                      constants.calendarYellowBoxBorderRadius),
-                ),
-              ),
-            ),
-            Expanded(
-                flex: constants.calendarTaskNameFlex,
-                child: Padding(
-                    padding: EdgeInsets.only(
-                        left: parentConstraints.maxWidth *
-                            constants.calendarTaskNamePaddingLeft),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AutoSizeText(
-                          snapshot.data!.first.name,
-                          minFontSize: constants.calendarTaskNameMinFontSize,
-                          maxFontSize: constants.calendarTaskNameMaxFontSize,
-                          style: const TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        AutoSizeText(snapshot.data!.first.description,
-                            minFontSize:
-                                constants.calendarTaskDescriptionMinFontSize,
-                            maxFontSize:
-                                constants.calendarTaskDescriptionMaxFontSize,
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            if (snapshot.data!.isNotEmpty) {
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                      flex: constants.calendarTaskWhiteBoxFlex,
+                      child: Container()),
+                  Flexible(
+                    flex: constants.calendarTaskYellowBoxFlex,
+                    child: Container(
+                      height: constants.calendarTaskYellowBoxHeight *
+                          parentConstraints.maxHeight,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(
+                            constants.calendarYellowBoxBorderRadius),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                      flex: constants.calendarTaskNameFlex,
+                      child: Padding(
+                          padding: EdgeInsets.only(
+                              left: parentConstraints.maxWidth *
+                                  constants.calendarTaskNamePaddingLeft),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AutoSizeText(
+                                snapshot.data![0].name,
+                                minFontSize:
+                                    constants.calendarTaskNameMinFontSize,
+                                maxFontSize:
+                                    constants.calendarTaskNameMaxFontSize,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              AutoSizeText(snapshot.data!.first.description,
+                                  minFontSize: constants
+                                      .calendarTaskDescriptionMinFontSize,
+                                  maxFontSize: constants
+                                      .calendarTaskDescriptionMaxFontSize,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color:
+                                        const Color(constants.homePageTextColor)
+                                            .withOpacity(
+                                                constants.homePageLowerOpacity),
+                                  ))
+                            ],
+                          ))),
+                  Flexible(
+                      flex: constants.calendarTaskTimeFlex,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom: constants.calendarBetweenHoursPadding *
+                                    parentConstraints.maxHeight),
+                            child: Text(
+                              timeService.getHourFromTimeStamp(
+                                  snapshot.data!.first.start),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: const Color(constants.homePageTextColor)
+                                    .withOpacity(
+                                        constants.homePageLowerOpacity),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            timeService
+                                .getHourFromTimeStamp(snapshot.data!.first.end),
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               color: const Color(constants.homePageTextColor)
                                   .withOpacity(constants.homePageLowerOpacity),
-                            ))
-                      ],
-                    ))),
-            Flexible(
-                flex: constants.calendarTaskTimeFlex,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: constants.calendarBetweenHoursPadding *
-                              parentConstraints.maxHeight),
-                      child: Text(
-                        timeService
-                            .getHourFromTimeStamp(snapshot.data!.first.start),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: const Color(constants.homePageTextColor)
-                              .withOpacity(constants.homePageLowerOpacity),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      timeService
-                          .getHourFromTimeStamp(snapshot.data!.first.end),
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: const Color(constants.homePageTextColor)
-                            .withOpacity(constants.homePageLowerOpacity),
-                      ),
-                    )
-                  ],
-                ))
-          ],
-        );
+                            ),
+                          )
+                        ],
+                      ))
+                ],
+              );
+            } else {
+              return const Text("No tasks for today");
+            }
+          } else {
+            return const Text("Something went wrong");
+          }
+        } else {
+          return const Text("Wait a second");
+        }
       },
     );
   }

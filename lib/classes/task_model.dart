@@ -9,7 +9,7 @@ class TaskModel {
   final String description;
   final Timestamp end;
   final Timestamp start;
-  final TasksTypes type;
+  final String type;
 
   const TaskModel(
       {required this.id,
