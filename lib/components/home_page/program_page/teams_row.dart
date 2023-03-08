@@ -13,8 +13,8 @@ class TeamsRow extends StatefulWidget {
       required this.dataSnapshot, 
       required this.parentConstraints,
       });
-  @override
-  _TeamsRowState createState() => _TeamsRowState();
+    @override
+    _TeamsRowState createState() => _TeamsRowState();
 }
 
 class _TeamsRowState extends State<TeamsRow> {

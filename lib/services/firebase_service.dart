@@ -49,7 +49,7 @@ class FirebaseService {
     if (currentUserData.tasksid.isNotEmpty) {
       await db
           .collection("tasks")
-          .where("id", whereIn: currentUserData.tasksid)
+          .where("id", whereIn: currentUserData.tasksid).where("type", isEqualTo:"match")
           .get()
           .then((value) => {
                 for (var i = 0; i < value.size; i++)
