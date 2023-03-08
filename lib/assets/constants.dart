@@ -67,13 +67,12 @@ const double buttonsBorderRadius = 50;
 
 ///Chores component
 const double choresPaddingTop = 10 / bigWhiteBoxHeight;
-const double choresAssigneesVerticalPadding = 10 / bigWhiteBoxHeight;
+const double choresAssigneesVerticalPadding = 5 / bigWhiteBoxHeight;
 const double choresAssigneesLineHeight = 3 / bigWhiteBoxHeight;
 const double choresDateVerticalPadding = 7 / bigWhiteBoxHeight;
 const double choresRowPaddingLeft = 45 / bigWhiteBoxWidth;
 const double choresRowPaddingRight = 25 / bigWhiteBoxWidth;
 const double choresPaddingBottom = 8 / bigWhiteBoxHeight;
-const double choresHourPaddingTop = 20 / bigWhiteBoxHeight;
 
 //Flex
 const int choresBlueButtonFlex = 24;
