@@ -62,11 +62,14 @@ const int programTeamLogoFlex = 56;
 const int programBreakBetweenLogAndNameFlex = 3;
 const int programTeamNameFlex = 16;
 
+// Flex values for arrows
+const int programLeftArrowFlex = 0;
+const int programRightArrowFlex = 0;
+
 //Buttons
 const double widthFactorYellowButton = 0.36;
 const double widthFactorBlueButton = 0.46;
 const double buttonsBorderRadius = 50;
-
 
 //* Calendar component
 

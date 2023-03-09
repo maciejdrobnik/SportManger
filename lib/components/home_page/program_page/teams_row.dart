@@ -4,11 +4,18 @@ import 'package:sport_manager/classes/match_task_model.dart';
 import 'package:sport_manager/services/convert_timestamp.dart';
 import '../../../assets/constants.dart' as constants;
 
-class TeamsRow extends StatelessWidget {
+class TeamsRow extends StatefulWidget {
   final BoxConstraints parentConstraints;
   final AsyncSnapshot<List<MatchTaskModel>> dataSnapshot;
   const TeamsRow(
       {super.key, required this.dataSnapshot, required this.parentConstraints});
+
+  @override
+  _TeamsRowState createState() => _TeamsRowState();
+}
+
+class _TeamsRowState extends State<TeamsRow> {
+  int _counter = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -17,23 +24,34 @@ class TeamsRow extends StatelessWidget {
       flex: constants.programTeamsRowFlex,
       child: Padding(
         padding: EdgeInsets.only(
-            left: parentConstraints.maxWidth * constants.programRowPaddingLeft / 2,
-            right:
-                parentConstraints.maxWidth * constants.programRowPaddingRight),
+            left: widget.parentConstraints.maxWidth *
+                constants.programRowPaddingLeft /
+                2,
+            right: widget.parentConstraints.maxWidth *
+                constants.programRowPaddingRight),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-                    padding: EdgeInsets.only(
-                        top: parentConstraints.maxHeight *
-                            constants.programHourPaddingTop,
+            _counter <= widget.dataSnapshot.data!.length && _counter != 0
+                ? Container(
+                    width: constants.programIconSize,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: constants.programIconSize,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _counter--;
+                          print(_counter);
+                        });
+                      },
                     ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_rounded,
-                      size: constants.programIconSize,
                   )
-            ),
+                : Container(
+                    width: constants.programIconSize,
+                  ),
             Flexible(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -51,16 +69,16 @@ class TeamsRow extends StatelessWidget {
                       ),
                       Flexible(
                           flex: constants.programTeamNameFlex,
-                          child: Text(dataSnapshot.data![0].team1Name)),
+                          child: Text(widget.dataSnapshot.data![0].team1Name)),
                     ],
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: parentConstraints.maxHeight *
+                        top: widget.parentConstraints.maxHeight *
                             constants.programHourPaddingTop),
                     child: AutoSizeText(
                       timestampService.getHourFromTimeStamp(
-                          dataSnapshot.data!.first.arrival),
+                          widget.dataSnapshot.data!.first.arrival),
                       minFontSize: constants.programMinHourFontSize,
                       maxFontSize: constants.programMaxHourFontSize,
                       style: const TextStyle(
@@ -79,20 +97,30 @@ class TeamsRow extends StatelessWidget {
                           child: Container()),
                       Flexible(
                           flex: constants.programTeamNameFlex,
-                          child: Text(dataSnapshot.data![0].team2Name)),
+                          child: Text(widget.dataSnapshot.data![0].team2Name)),
                     ],
                   ),
                 ],
               ),
             ),
-            Padding(
-                padding: EdgeInsets.only(
-                    top: parentConstraints.maxHeight *
-                        constants.programHourPaddingTop),
-                child: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: constants.programIconSize,
-                ))
+            _counter >= 0 && _counter != widget.dataSnapshot.data!.length
+                ? Container(
+                    width: constants.programIconSize,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: constants.programIconSize,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _counter++;
+                        });
+                      },
+                    ),
+                  )
+                : Container(
+                    width: constants.programIconSize,
+                  )
           ],
         ),
       ),
