@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sport_manager/classes/match_task_model.dart';
@@ -57,11 +59,12 @@ class FirebaseService {
                   {
                     matches.add(MatchTaskModel(
                         id: value.docs[i].data()["id"],
+                        name: value.docs[i].data()["name"],
                         assignees: value.docs[i].data()["assignees"],
                         description: value.docs[i].data()["description"],
                         end: value.docs[i].data()["end"],
                         start: value.docs[i].data()["start"],
-                        type: TasksTypes.match,
+                        type: "match",
                         dressingRoom: value.docs[i].data()["dressingRoom"],
                         arrival: value.docs[i].data()["arrival"],
                         materials: value.docs[i].data()["materials"],
@@ -78,5 +81,91 @@ class FirebaseService {
               });
     }
     return matches;
+  }
+
+  Future<List<TaskModel>> getTasks(DateTime date) async {
+    DateTime startTime = DateTime(date.year, date.month, date.day, 0, 0);
+    DateTime endTime = DateTime(date.year, date.month, date.day, 23, 59, 59);
+    List<TaskModel> tasks = [];
+    final currentUserData = await getUserData();
+    await db
+        .collection("tasks")
+        .where("id", whereIn: currentUserData.tasksid)
+        .where("start", isGreaterThanOrEqualTo: startTime)
+        .where("start", isLessThanOrEqualTo: endTime)
+        .orderBy("start")
+        .get()
+        .then((value) => {
+              for (var i = 0; i < value.size; i++)
+                {
+                  tasks.add(TaskModel(
+                    id: value.docs[i].data()["id"],
+                    name: value.docs[i].data()["name"],
+                    assignees: value.docs[i].data()["assignees"],
+                    description: value.docs[i].data()["description"],
+                    end: value.docs[i].data()["end"],
+                    start: value.docs[i].data()["start"],
+                    type: value.docs[i].data()["type"],
+                  )),
+                }
+            });
+    return tasks;
+  }
+
+  // Future<TaskModel> getFirstTask(DateTime date) async {
+  //   final currentUserData = await getUserData();
+  //   await db
+  //       .collection("tasks")
+  //       .where("id", whereIn: currentUserData.tasksid)
+  //       .get()
+  //       .then((value) => {});
+  //   return tasks;
+  // }
+  Future<LinkedHashMap<DateTime, List<TaskModel>>> getAllUserEvents() async {
+    final currentUserData = await getUserData();
+    List<TaskModel> events = [];
+    await db
+        .collection("tasks")
+        .where("id", whereIn: currentUserData.tasksid)
+        .orderBy("start")
+        .get()
+        .then((value) => {
+              for (var i = 0; i < value.size; i++)
+                {
+                  events.add(TaskModel(
+                    id: value.docs[i].data()["id"],
+                    start: value.docs[i].data()["start"],
+                    type: value.docs[i].data()["type"],
+                    name: value.docs[i].data()["name"],
+                    assignees: value.docs[i].data()["assignees"],
+                    description: value.docs[i].data()["description"],
+                    end: value.docs[i].data()["end"],
+                  )),
+                }
+            });
+    List<TaskModel> tempEvents = [];
+    final LinkedHashMap<DateTime, List<TaskModel>> eventsMap =
+        LinkedHashMap<DateTime, List<TaskModel>>();
+    DateTime tempDate = events.first.start.toDate();
+    // ConvertTimestampService timeService = ConvertTimestampService();
+    for (var event in events) {
+      //!It should check also year and month
+      if (event.start.toDate().day == tempDate.day) {
+        print("Here");
+        tempEvents.add(event);
+      } else {
+        print("no here");
+        eventsMap[tempDate] = tempEvents;
+        tempEvents = [];
+        tempEvents.add(event);
+        tempDate = event.start.toDate();
+      }
+      // DateTime eventStart = event.start.toDate();
+    }
+    if (tempEvents.isNotEmpty) {
+      eventsMap[tempDate] = tempEvents;
+    }
+    print(eventsMap);
+    return eventsMap;
   }
 }

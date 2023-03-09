@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sport_manager/components/home_page/calendar_page/calendar.dart';
 import 'package:sport_manager/components/home_page/sponsor.dart';
 import 'package:sport_manager/components/home_page/white_container.dart';
-import 'calendar_page/calendar_main.dart';
 import 'chores.dart';
 import 'program_page/program_main.dart';
 import './../../assets/constants.dart' as constants;
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                 children: const [
                   WhiteContainer(
                       flexValue: constants.bigWhiteBoxFlex,
-                      content: CalendarMain()),
+                      content: Calendar()),
                   WhiteContainer(
                       flexValue: constants.bigWhiteBoxFlex,
                       content: ProgramMain()),
