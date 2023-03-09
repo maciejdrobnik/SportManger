@@ -49,12 +49,13 @@ const double programHourPaddingTop = 20 / bigWhiteBoxHeight;
 
 // Those 2 will need to be changed. I will think about it later
 const double programIconSize = 20;
+const double programEmptyContainerSize = 15;
 const double programRaiseDateAndIcon = 20;
 
 // Flex values for main column
 const int programBlueButtonFlex = 24;
 const int programDateFlex = 17;
-const int programTeamsRowFlex = 42;
+const int programTeamsRowFlex = 40;
 const int programYellowButtonFlex = 17;
 
 // Flex values for team row

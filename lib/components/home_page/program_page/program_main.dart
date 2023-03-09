@@ -40,25 +40,6 @@ class ProgramMain extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Flexible(
-                        flex: constants.programDateFlex,
-                        child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: constraints.maxHeight *
-                                    constants.programDateVerticalPadding),
-                            child: AutoSizeText(
-                              timestampService.getDateFromTimeStamp(
-                                  snapshot.data!.first.start),
-                              maxLines: 1,
-                              maxFontSize: constants.programMaxDateFontSize,
-                              minFontSize: constants.programMinDateFontSize,
-                              style: const TextStyle(
-                                color: Color(constants.homePageTextColor),
-                                fontWeight: FontWeight.w600,
-                                overflow: TextOverflow.visible,
-                              ),
-                            )),
-                      ),
                       TeamsRow(
                           dataSnapshot: snapshot,
                           parentConstraints: constraints),
