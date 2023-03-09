@@ -71,8 +71,8 @@ const double buttonsBorderRadius = 50;
 
 // Flex values for calendar_main widget
 const int calendarBlueButtonFlex = 43;
-const int calendarMonthFlex = 23;
-const int calendarFlex = 56;
+// const int calendarMonthFlex = 23;
+const int calendarFlex = 56 + 23;
 const int calendarTaskFlex = 58;
 
 // Padding values
@@ -87,7 +87,7 @@ const double calendarMonthTextMinFontSize = 12;
 const double calendarMonthTextMaxFontSize = 18;
 
 //! I will need to think about this one. It is not responsive for now
-const double calendarRowHeight = 36;
+const double calendarRowHeight = 33;
 
 // Flex values for task row
 const int calendarTaskWhiteBoxFlex = 13;

@@ -45,4 +45,8 @@ class ConvertTimestampService {
     int month = date.month;
     return "${months[month - 1]} $day";
   }
+
+  String getMonthFromNumber(month) {
+    return months[month - 1];
+  }
 }
