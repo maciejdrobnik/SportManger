@@ -44,7 +44,6 @@ class _TeamsRowState extends State<TeamsRow> {
                       onPressed: () {
                         setState(() {
                           _counter--;
-                          print(_counter);
                         });
                       },
                     ),
