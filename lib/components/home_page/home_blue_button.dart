@@ -6,12 +6,14 @@ class HomeBlueButton extends StatelessWidget {
   final String content;
   final double minBlueButtonFontSize;
   final double maxBlueButtonFontSize;
+  final VoidCallback? onClick;
 
   const HomeBlueButton(
       {Key? key,
       required this.content,
       required this.minBlueButtonFontSize,
-      required this.maxBlueButtonFontSize})
+      required this.maxBlueButtonFontSize,
+      this.onClick})
       : super(key: key);
 
   @override
@@ -20,7 +22,7 @@ class HomeBlueButton extends StatelessWidget {
       widthFactor: constants.widthFactorBlueButton,
       alignment: FractionalOffset.topCenter,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onClick ?? () {},
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(constants.primaryBlue),
           shape: RoundedRectangleBorder(

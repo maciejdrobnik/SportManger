@@ -151,10 +151,8 @@ class FirebaseService {
     for (var event in events) {
       //!It should check also year and month
       if (event.start.toDate().day == tempDate.day) {
-        print("Here");
         tempEvents.add(event);
       } else {
-        print("no here");
         eventsMap[tempDate] = tempEvents;
         tempEvents = [];
         tempEvents.add(event);
@@ -165,7 +163,6 @@ class FirebaseService {
     if (tempEvents.isNotEmpty) {
       eventsMap[tempDate] = tempEvents;
     }
-    print(eventsMap);
     return eventsMap;
   }
 }
