@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //TODO: Set the reboto as a theme font for whole application
 //* Home Page Component
+
 const double bigWhiteBoxHeight = 180;
 const double bigWhiteBoxWidth = 354;
 const double homePageHeight = 770;
@@ -13,7 +14,7 @@ const double homePagePaddingHorizontal = 18 / homePageWidth;
 const double homePageContainerBorderRadius = 10;
 const int bigWhiteBoxFlex = 180;
 const int smallWhiteBoxFlex = 124;
-const Color backgroundBox = Colors.white;
+const Color backgroundBoxColor = Colors.white;
 const int homePageBackground = 0xffE4E6EB;
 const int homePageTextColor = 0xff333333;
 const double homePageLowerOpacity = 0.6;
@@ -79,6 +80,8 @@ const int calendarTaskFlex = 58;
 const double calendarPaddingTop = 9 / bigWhiteBoxHeight;
 const double calendarMonthTextPaddingLeft = 12 / bigWhiteBoxWidth;
 const double calendarMonthTextPaddingTop = 3 / bigWhiteBoxHeight;
+const double calendarMonthTextPaddingRight = 10 / bigWhiteBoxWidth;
+const double calendarMonthTextPaddingBottom = 5 / bigWhiteBoxHeight;
 const double calendarBetweenHoursPadding = 4 / bigWhiteBoxHeight;
 const double calendarTaskNamePaddingLeft = 7 / bigWhiteBoxWidth;
 
@@ -86,8 +89,23 @@ const double calendarTaskNamePaddingLeft = 7 / bigWhiteBoxWidth;
 const double calendarMonthTextMinFontSize = 12;
 const double calendarMonthTextMaxFontSize = 18;
 
-//! I will need to think about this one. It is not responsive for now
-const double calendarRowHeight = 33;
+//* Calendar from package table_calendar
+const double calendarRowHeight = 33 / bigWhiteBoxHeight;
+const double calendarDayFontSize = 12 / bigWhiteBoxHeight;
+const double calendarCircleMargin = 4 / bigWhiteBoxHeight;
+const double calendarTitleFontSize = 16 / bigWhiteBoxHeight;
+const double arrowSize = 19 / bigWhiteBoxHeight;
+
+//* Tasks colors used in calendar
+const int matchTaskColor = 0xffA020F0;
+const int trainingTaskColor = 0xffEFCA3E;
+const int otherTaskColor = 0xffEFCA3E;
+const int noTaskColor = 0xffEFCA3E;
+//* font colors
+const int matchTaskFontColor = 0xffFFFFFF;
+const int trainingTaskFontColor = 0xffFFFFFF;
+const int otherTaskFontColor = 0xffFFFFFF;
+const int noTaskFontColor = 0xffFFFFFF;
 
 // Flex values for task row
 const int calendarTaskWhiteBoxFlex = 13;
@@ -119,3 +137,12 @@ const int choresBlueButtonFlex = 24;
 const int choresDateFlex = 17;
 const int choresAssigneesFlex = 42;
 const int choresYellowButtonFlex = 17;
+
+//* Subpages
+
+//*Calendar details page
+const calendarDetailsPaddingTop = 18 / homePageHeight;
+
+//Flex values
+const calendarDetailsSponsorFlex = 126;
+const calendarDetailsCalendarFlex = 585;

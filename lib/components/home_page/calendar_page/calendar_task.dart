@@ -8,11 +8,13 @@ class CalendarTask extends StatelessWidget {
   final BoxConstraints parentConstraints;
   final DateTime selectedDate;
   final List<TaskModel> tasks;
+  final Color decorationColor;
   const CalendarTask(
       {super.key,
       required this.parentConstraints,
       required this.selectedDate,
-      required this.tasks});
+      required this.tasks,
+      required this.decorationColor});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class CalendarTask extends StatelessWidget {
                   height: constants.calendarTaskYellowBoxHeight *
                       parentConstraints.maxHeight,
                   decoration: BoxDecoration(
-                    color: Colors.yellow,
+                    color: decorationColor,
                     borderRadius: BorderRadius.circular(
                         constants.calendarYellowBoxBorderRadius),
                   ),

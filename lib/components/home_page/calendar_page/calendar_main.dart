@@ -5,6 +5,7 @@ import 'package:sport_manager/services/convert_timestamp.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../../assets/constants.dart' as constants;
 import '../../../classes/task_model.dart';
+import '../../sub_pages/calendar_details/calendar_details.dart';
 import '../home_blue_button.dart';
 import 'calendar_task.dart';
 
@@ -43,33 +44,53 @@ class _CalendarMainState extends State<CalendarMain> {
     return kEvents[day] ?? [];
   }
 
-  List<TaskModel> _getEventsForRange(DateTime start, DateTime end) {
-    // Implementation example
-    final days = daysInRange(start, end);
-    return [
-      for (final d in days) ..._getEventsForDay(d),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     kEvents = LinkedHashMap<DateTime, List<TaskModel>>(
       equals: isSameDay,
       hashCode: getHashCode,
     )..addAll(widget.events);
+    late final Color decorationColor;
+    final dayFontSize =
+        constants.calendarDayFontSize * widget.parentConstraints.maxHeight;
+    late final Color dayFontColor;
+    if (_getEventsForDay(selectedDay).isNotEmpty) {
+      switch (_getEventsForDay(selectedDay).first.type) {
+        case 'match':
+          decorationColor = const Color(constants.matchTaskColor);
+          dayFontColor = const Color(constants.matchTaskFontColor);
+          break;
+        case 'training':
+          decorationColor = const Color(constants.trainingTaskColor);
+          dayFontColor = const Color(constants.trainingTaskFontColor);
+          break;
+        default:
+          decorationColor = const Color(constants.otherTaskColor);
+          dayFontColor = const Color(constants.otherTaskFontColor);
+          break;
+      }
+    } else {
+      decorationColor = const Color(constants.noTaskColor);
+      dayFontColor = const Color(constants.noTaskFontColor);
+    }
     return Column(
       children: [
         Flexible(
           flex: constants.calendarBlueButtonFlex,
           child: Padding(
-            padding: EdgeInsets.only(
-                top: constants.calendarPaddingTop *
-                    widget.parentConstraints.maxHeight),
-            child: const HomeBlueButton(
-                content: "Calendar",
-                minBlueButtonFontSize: constants.minBlueButtonFontSize,
-                maxBlueButtonFontSize: constants.maxBlueButtonFontSize),
-          ),
+              padding: EdgeInsets.only(
+                  top: constants.calendarPaddingTop *
+                      widget.parentConstraints.maxHeight),
+              child: HomeBlueButton(
+                  content: "Calendar",
+                  minBlueButtonFontSize: constants.minBlueButtonFontSize,
+                  maxBlueButtonFontSize: constants.maxBlueButtonFontSize,
+                  onClick: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CalendarDetails()));
+                  })),
         ),
         Flexible(
           flex: constants.calendarFlex,
@@ -81,46 +102,55 @@ class _CalendarMainState extends State<CalendarMain> {
                 firstDay: DateTime(2022, 2, 27),
                 lastDay: DateTime(2024, 3, 5),
                 calendarFormat: CalendarFormat.week,
-                rowHeight: constants.calendarRowHeight,
+                rowHeight: constants.calendarRowHeight *
+                    widget.parentConstraints.maxHeight,
                 onDaySelected: _changeSelectedDay,
                 selectedDayPredicate: (day) => isSameDay(day, selectedDay),
                 startingDayOfWeek: StartingDayOfWeek.monday,
-                //! The styling of calendar. We will need to discuss it. It has some strange behaviours
-                calendarStyle: const CalendarStyle(
+                calendarStyle: CalendarStyle(
                     isTodayHighlighted: false,
                     selectedDecoration: BoxDecoration(
-                      color: Colors.yellow,
+                      color: decorationColor,
                       shape: BoxShape.circle,
                     ),
-                    cellMargin: EdgeInsets.all(4),
-                    defaultTextStyle: TextStyle(fontSize: 12),
-                    todayTextStyle: TextStyle(fontSize: 12),
-                    outsideTextStyle: TextStyle(fontSize: 12),
-                    selectedTextStyle: TextStyle(fontSize: 12),
-                    weekendTextStyle: TextStyle(fontSize: 12)),
+                    cellMargin: EdgeInsets.all(constants.calendarCircleMargin *
+                        widget.parentConstraints.maxHeight),
+                    defaultTextStyle: TextStyle(fontSize: dayFontSize),
+                    todayTextStyle: TextStyle(fontSize: dayFontSize),
+                    outsideTextStyle: TextStyle(fontSize: dayFontSize),
+                    selectedTextStyle:
+                        TextStyle(fontSize: dayFontSize, color: dayFontColor),
+                    weekendTextStyle: TextStyle(fontSize: dayFontSize)),
                 headerStyle: HeaderStyle(
                   titleCentered: true,
                   formatButtonVisible: false,
                   headerPadding: EdgeInsets.only(
-                      left: constants.calendarMonthTextPaddingLeft *
-                          widget.parentConstraints.maxWidth,
-                      top: constants.calendarMonthTextPaddingTop *
-                          widget.parentConstraints.maxHeight,
-                      bottom: 6,
-                      right: 10),
+                    top: constants.calendarMonthTextPaddingTop *
+                        widget.parentConstraints.maxHeight,
+                    bottom: constants.calendarMonthTextPaddingBottom *
+                        widget.parentConstraints.maxHeight,
+                    left: constants.calendarMonthTextPaddingLeft *
+                        widget.parentConstraints.maxWidth,
+                    right: constants.calendarMonthTextPaddingRight *
+                        widget.parentConstraints.maxWidth,
+                  ),
                   leftChevronPadding: const EdgeInsets.all(0),
                   leftChevronMargin: const EdgeInsets.all(0),
-                  leftChevronIcon: const Icon(
+                  leftChevronIcon: Icon(
                     Icons.chevron_left,
-                    size: 19,
+                    size: constants.arrowSize *
+                        widget.parentConstraints.maxHeight,
                   ),
                   rightChevronPadding: const EdgeInsets.all(0),
                   rightChevronMargin: const EdgeInsets.all(0),
-                  rightChevronIcon: const Icon(
+                  rightChevronIcon: Icon(
                     Icons.chevron_right,
-                    size: 19,
+                    size: constants.arrowSize *
+                        widget.parentConstraints.maxHeight,
                   ),
-                  titleTextStyle: const TextStyle(fontSize: 16),
+                  titleTextStyle: TextStyle(
+                      fontSize: constants.calendarTitleFontSize *
+                          widget.parentConstraints.maxHeight),
                 ),
               ),
             ],
@@ -132,6 +162,7 @@ class _CalendarMainState extends State<CalendarMain> {
               parentConstraints: widget.parentConstraints,
               selectedDate: selectedDay,
               tasks: _getEventsForDay(selectedDay),
+              decorationColor: decorationColor,
             )),
       ],
     );
