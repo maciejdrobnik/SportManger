@@ -40,9 +40,7 @@ class HomePage extends StatelessWidget {
                       content: ProgramMain()),
                   WhiteContainer(
                       flexValue: constants.bigWhiteBoxFlex, content: Chores()),
-                  WhiteContainer(
-                      flexValue: constants.smallWhiteBoxFlex,
-                      content: Sponsor())
+                  Sponsor()
                 ],
               ),
             );

@@ -11,7 +11,7 @@ class WhiteContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
         flex: flexValue,
         child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
@@ -21,6 +21,7 @@ class WhiteContainer extends StatelessWidget {
                 bottom:
                     deviceInfo.size.height * constants.homePagePaddingVertical),
             child: Container(
+              height: 200,
               decoration: const BoxDecoration(
                 color: constants.backgroundBoxColor,
                 borderRadius: BorderRadius.all(

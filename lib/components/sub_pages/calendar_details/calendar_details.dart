@@ -30,9 +30,7 @@ class CalendarDetails extends StatelessWidget {
                     WhiteContainer(
                         flexValue: constants.calendarDetailsCalendarFlex,
                         content: CalendarDetailsContent()),
-                    WhiteContainer(
-                        flexValue: constants.calendarDetailsSponsorFlex,
-                        content: Sponsor())
+                    Sponsor(),
                   ])));
         }));
   }

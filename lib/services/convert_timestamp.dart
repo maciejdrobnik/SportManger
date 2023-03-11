@@ -25,9 +25,9 @@ const List<String> months = [
 class ConvertTimestampService {
   String getHourFromTimeStamp(timeStamp) {
     DateTime date = timeStamp.toDate();
-    String hour = date.hour > 10 ? date.hour.toString() : '0${date.hour}';
+    String hour = date.hour >= 10 ? date.hour.toString() : '0${date.hour}';
     String minute =
-        date.minute > 10 ? date.minute.toString() : '0${date.minute}';
+        date.minute >= 10 ? date.minute.toString() : '0${date.minute}';
     return '$hour:$minute';
   }
 
